@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h:form>
+                        <p:panelGrid columns="4">
+                            <p:clock pattern="dd/MM/yyyy" />
+                            <p:clock pattern="hh:mm:ss" />
+                            <p:outputLabel value="Select Calendar"/>
+                            <p:calendar id="cal"  navigator="true" />
+                        </p:panelGrid>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="250" header="Menu" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Navigations">
+                                <p:menuitem value="G. Employe" outcome="/web/employe/employeForm.xhtml" icon="ui-icon-star"/>
+                                <p:menuitem value="G. Service" outcome="/web/service/serviceForm.xhtml" icon="ui-icon-star"/>
+                                <p:menuitem value="Statistics" outcome="/web/service/index.xhtml" icon="ui-icon-star"/>
+                                <p:menuitem value="Employés Service" outcome="/web/service/empserv.xhtml" icon="ui-icon-star"/>
+                                <p:menuitem value="logout" outcome="/web/login/loginForm.xhtml" icon="ui-icon-star"/>
+                            </p:submenu>
+                        </p:menu> 
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+
+
+                    <f:view>
+                        <h:form id="f2">
+                            <div class="card" style="width: 50%; margin: 0 auto;">
+
+                                <p:panel header="Recherche par TREE des Service - Chef - Employé">
+
+                                    <p:tree value="#{treeBasicView.root}" var="node" dynamic="true" cache="false">
+                                        <p:treeNode>
+                                            <h:outputText value="#{node.data.nom}" />
+                                        </p:treeNode>
+                                    </p:tree>
+
+                                </p:panel>
+                            </div>
+
+                        </h:form>
+
+
+
+
+                    </f:view>
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
